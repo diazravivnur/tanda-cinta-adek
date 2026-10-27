@@ -1,0 +1,21 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "contractions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "sessionId", "order": "ASCENDING" },
+        { "fieldPath": "startAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "kickSessions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "startAt", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
+

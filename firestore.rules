@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function: cek apakah uid pengguna terdaftar di members couple
+    function isMember(coupleId) {
+      return request.auth != null &&
+        request.auth.uid in get(/databases/$(database)/documents/couples/$(coupleId)).data.members;
+    }
+
+    // Dokumen couples/{coupleId}:
+    // Hanya boleh dibuat atau dihapus via Admin SDK / Cloud Functions
+    // Anggota yang terdaftar boleh membaca dan memperbarui data selain members dan roles
+    match /couples/{coupleId} {
+      allow read: if isMember(coupleId);
+      allow update: if isMember(coupleId) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['members', 'roles']);
+      allow create, delete: if false;
+
+      match /contractions/{contractionId} {
+        allow read, write: if isMember(coupleId);
+      }
+
+      match /contractionSessions/{sessionId} {
+        allow read: if isMember(coupleId);
+        allow create: if isMember(coupleId) &&
+          request.resource.data.notifiedLevel == 0 &&
+          request.resource.data.status == 'INSUFFICIENT' &&
+          !request.resource.data.keys().hasAny(['ackBy', 'ackAt', 'lastUrgentSentAt']);
+        allow update: if isMember(coupleId) &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lastContractionAt', 'urgentRequestedAt']) &&
+          (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['urgentRequestedAt']) ||
+            get(/databases/$(database)/documents/couples/$(coupleId)).data.roles[request.auth.uid] == 'ibu');
+        allow delete: if false;
+      }
+
+      match /kickSessions/{sessionId} {
+        allow read, write: if isMember(coupleId);
+      }
+
+      match /dailySummaries/{summaryId} {
+        allow read, write: if isMember(coupleId);
+      }
+    }
+
+    // Dokumen users/{uid}:
+    // Hanya dibuat oleh Cloud Functions joinCouple via Admin SDK
+    // Klien hanya boleh membaca miliknya sendiri dan hanya boleh update fcmTokens, displayName, updatedAt
+    match /users/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow update: if request.auth != null &&
+        request.auth.uid == uid &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['fcmTokens', 'displayName', 'updatedAt']);
+      allow create, delete: if false;
+    }
+  }
+}

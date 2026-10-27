@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "lib",
+    "rootDir": "..",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2021",
+    "skipLibCheck": true
+  },
+  "compileOnSave": true,
+  "include": [
+    "src",
+    "../packages/shared/src",
+    "../packages/shared/src/notificationDecision.ts",
+    "../src/features/contractions/patternEngine.ts"
+  ],
+  "exclude": [
+    "../packages/shared/**/*.test.ts"
+  ]
+}
+

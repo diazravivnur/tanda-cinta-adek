@@ -1,0 +1,305 @@
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0f;
+  --primary: #c2185b;
+  --secondary: #0057b8;
+  --ok: #0b6b2e;
+  --warn: #8a5a00;
+  --danger: #b00020;
+  --card-bg: #f4f4f6;
+  --border: #d0d0d5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0f;
+    --text: #ffffff;
+    --primary: #ff5c8a;
+    --secondary: #5ca8ff;
+    --ok: #4ade80;
+    --warn: #ffc24a;
+    --danger: #ff6b6b;
+    --card-bg: #16161f;
+    --border: #2a2a35;
+  }
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a0f;
+  --text: #ffffff;
+  --primary: #ff5c8a;
+  --secondary: #5ca8ff;
+  --ok: #4ade80;
+  --warn: #ffc24a;
+  --danger: #ff6b6b;
+  --card-bg: #16161f;
+  --border: #2a2a35;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #0a0a0f;
+  --primary: #c2185b;
+  --secondary: #0057b8;
+  --ok: #0b6b2e;
+  --warn: #8a5a00;
+  --danger: #b00020;
+  --card-bg: #f4f4f6;
+  --border: #d0d0d5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.app-container {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.scaffold-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scaffold-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--ok);
+  color: #ffffff;
+}
+
+/* Auth Screens Styles (Kontras Tinggi WCAG AAA/AA) */
+.auth-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.auth-logo {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
+
+.auth-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.auth-subtitle {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+.auth-meta {
+  display: inline-block;
+  margin-top: 4px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.auth-action-area {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.btn-google-login {
+  width: 100%;
+  min-height: 56px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background-color: #ffffff;
+  color: #1f1f1f;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.1s ease,
+    background-color 0.15s ease;
+}
+
+.btn-google-login:active {
+  transform: scale(0.98);
+  background-color: #f1f1f1;
+}
+
+.btn-google-login:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-disclaimer {
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.75;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.auth-error-banner {
+  margin-top: 16px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: rgba(176, 0, 32, 0.1);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+}
+
+.auth-inline-warning {
+  padding: 12px 16px;
+  background-color: rgba(138, 90, 0, 0.15);
+  border: 1px solid var(--warn);
+  color: var(--warn);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.unauthorized-card {
+  border-color: var(--danger);
+}
+
+.unauthorized-icon {
+  font-size: 54px;
+  margin-bottom: 12px;
+}
+
+.unauthorized-description {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.btn-danger-action {
+  width: 100%;
+  min-height: 56px;
+  border-radius: 14px;
+  border: none;
+  background-color: var(--danger);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.btn-danger-action:active {
+  opacity: 0.85;
+}
+
+.btn-secondary-action {
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background-color: transparent;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary-action:active {
+  background-color: var(--border);
+}
+
+.role-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.auth-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,246 @@
+/**
+ * Design Tokens — Nanti Kita Ketemu (SPEC §8 & ui-premium skill)
+ * Kontras tinggi, native SF Pro / system-ui, iPhone PWA optimized
+ */
+
+:root {
+  /* ==================== PALET TERANG (DEFAULT) ==================== */
+  --bg: #FFFFFF;
+  --text: #0A0A0F;
+  --text-muted: #545460;
+  --surface: #F5F5F7;
+  --surface-2: #EAEAEE;
+  --border: rgba(10, 10, 15, 0.12);
+  --border-focus: #0A0A0F;
+
+  /* Warna Semantik (SPEC §8) */
+  --primary: #C2185B;       /* Kontraksi */
+  --primary-text: #FFFFFF;
+  --primary-surface: rgba(194, 24, 91, 0.08);
+  --primary-border: rgba(194, 24, 91, 0.24);
+
+  --secondary: #0057B8;     /* Tendangan */
+  --secondary-text: #FFFFFF;
+  --secondary-surface: rgba(0, 87, 184, 0.08);
+
+  --ok: #0B6B2E;            /* Sukses / Stabil */
+  --ok-text: #FFFFFF;
+  --ok-surface: rgba(11, 107, 46, 0.10);
+  --ok-border: rgba(11, 107, 46, 0.25);
+
+  --warn: #8A5A00;          /* Waspada / Teratur */
+  --warn-text: #FFFFFF;
+  --warn-surface: rgba(138, 90, 0, 0.10);
+  --warn-border: rgba(138, 90, 0, 0.28);
+
+  --danger: #B00020;        /* Bahaya / Urgent */
+  --danger-text: #FFFFFF;
+  --danger-surface: rgba(176, 0, 32, 0.08);
+  --danger-border: rgba(176, 0, 32, 0.25);
+
+  /* ==================== SPACING SKALA 4px ==================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ==================== RADIUS ==================== */
+  --radius-sm: 12px;        /* Kontrol, input, item daftar */
+  --radius-md: 20px;        /* Kartu, bottom sheet */
+  --radius-full: 9999px;    /* Tombol bulat, badge pill */
+
+  /* ==================== ELEVATION & SHADOW ==================== */
+  --shadow-sheet: 0 -4px 24px rgba(10, 10, 15, 0.12);
+  --shadow-button: 0 4px 16px rgba(194, 24, 91, 0.20);
+  --shadow-card: 0 1px 3px rgba(10, 10, 15, 0.04);
+
+  /* ==================== TRANSISI & ANIMASI ==================== */
+  --duration-press: 120ms;
+  --duration-transition: 200ms;
+  --duration-sheet: 320ms;
+  --ease-ios: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ==================== TIPOGRAFI ==================== */
+  --font-family: system-ui, -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-timer: 88px;
+  --font-title: 28px;
+  --font-card-title: 20px;
+  --font-body: 18px;
+  --font-caption: 15px;
+
+  /* ==================== IPHONE PWA SAFE AREA ==================== */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* ==================== PALET GELAP ==================== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A0A0F;
+    --text: #FFFFFF;
+    --text-muted: #A6A6B6;
+    --surface: #16161F;
+    --surface-2: #22222E;
+    --border: rgba(255, 255, 255, 0.14);
+    --border-focus: #FFFFFF;
+
+    --primary: #FF5C8A;       /* Kontraksi Gelap */
+    --primary-text: #0A0A0F;
+    --primary-surface: rgba(255, 92, 138, 0.12);
+    --primary-border: rgba(255, 92, 138, 0.30);
+
+    --secondary: #5CA8FF;     /* Tendangan Gelap */
+    --secondary-text: #0A0A0F;
+    --secondary-surface: rgba(92, 168, 255, 0.12);
+
+    --ok: #4ADE80;            /* Sukses / Stabil Gelap */
+    --ok-text: #0A0A0F;
+    --ok-surface: rgba(74, 222, 128, 0.14);
+    --ok-border: rgba(74, 222, 128, 0.32);
+
+    --warn: #FFC24A;          /* Waspada / Teratur Gelap */
+    --warn-text: #0A0A0F;
+    --warn-surface: rgba(255, 194, 74, 0.14);
+    --warn-border: rgba(255, 194, 74, 0.35);
+
+    --danger: #FF6B6B;        /* Bahaya Gelap */
+    --danger-text: #0A0A0F;
+    --danger-surface: rgba(255, 107, 107, 0.14);
+    --danger-border: rgba(255, 107, 107, 0.32);
+
+    --shadow-sheet: 0 -4px 32px rgba(0, 0, 0, 0.60);
+    --shadow-button: 0 4px 20px rgba(255, 92, 138, 0.30);
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.40);
+  }
+}
+
+/* Override Tema Manual */
+[data-theme="dark"] {
+  --bg: #0A0A0F;
+  --text: #FFFFFF;
+  --text-muted: #A6A6B6;
+  --surface: #16161F;
+  --surface-2: #22222E;
+  --border: rgba(255, 255, 255, 0.14);
+  --border-focus: #FFFFFF;
+
+  --primary: #FF5C8A;
+  --primary-text: #0A0A0F;
+  --primary-surface: rgba(255, 92, 138, 0.12);
+  --primary-border: rgba(255, 92, 138, 0.30);
+
+  --secondary: #5CA8FF;
+  --secondary-text: #0A0A0F;
+  --secondary-surface: rgba(92, 168, 255, 0.12);
+
+  --ok: #4ADE80;
+  --ok-text: #0A0A0F;
+  --ok-surface: rgba(74, 222, 128, 0.14);
+  --ok-border: rgba(74, 222, 128, 0.32);
+
+  --warn: #FFC24A;
+  --warn-text: #0A0A0F;
+  --warn-surface: rgba(255, 194, 74, 0.14);
+  --warn-border: rgba(255, 194, 74, 0.35);
+
+  --danger: #FF6B6B;
+  --danger-text: #0A0A0F;
+  --danger-surface: rgba(255, 107, 107, 0.14);
+  --danger-border: rgba(255, 107, 107, 0.32);
+
+  --shadow-sheet: 0 -4px 32px rgba(0, 0, 0, 0.60);
+  --shadow-button: 0 4px 20px rgba(255, 92, 138, 0.30);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.40);
+}
+
+[data-theme="light"] {
+  --bg: #FFFFFF;
+  --text: #0A0A0F;
+  --text-muted: #545460;
+  --surface: #F5F5F7;
+  --surface-2: #EAEAEE;
+  --border: rgba(10, 10, 15, 0.12);
+  --border-focus: #0A0A0F;
+
+  --primary: #C2185B;
+  --primary-text: #FFFFFF;
+  --primary-surface: rgba(194, 24, 91, 0.08);
+  --primary-border: rgba(194, 24, 91, 0.24);
+
+  --secondary: #0057B8;
+  --secondary-text: #FFFFFF;
+  --secondary-surface: rgba(0, 87, 184, 0.08);
+
+  --ok: #0B6B2E;
+  --ok-text: #FFFFFF;
+  --ok-surface: rgba(11, 107, 46, 0.10);
+  --ok-border: rgba(11, 107, 46, 0.25);
+
+  --warn: #8A5A00;
+  --warn-text: #FFFFFF;
+  --warn-surface: rgba(138, 90, 0, 0.10);
+  --warn-border: rgba(138, 90, 0, 0.28);
+
+  --danger: #B00020;
+  --danger-text: #FFFFFF;
+  --danger-surface: rgba(176, 0, 32, 0.08);
+  --danger-border: rgba(176, 0, 32, 0.25);
+
+  --shadow-sheet: 0 -4px 24px rgba(10, 10, 15, 0.12);
+  --shadow-button: 0 4px 16px rgba(194, 24, 91, 0.20);
+  --shadow-card: 0 1px 3px rgba(10, 10, 15, 0.04);
+}
+
+/* ==================== GLOBAL RESET & IPHONE PWA BASE ==================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: 16px; /* Min 16px untuk mencegah iOS auto-zoom */
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
