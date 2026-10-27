@@ -25,7 +25,7 @@ const sameOriginAuthDomain =
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "placeholder-api-key",
-  // Gunakan domain Hosting aplikasi agar redirect Auth tetap same-origin pada Safari/iOS.
+  // Keep the redirect helper same-origin for Safari/iOS standalone PWA.
   authDomain: sameOriginAuthDomain || import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "localhost",
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "demo-project",
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
